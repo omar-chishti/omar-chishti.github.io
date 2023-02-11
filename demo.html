@@ -5,11 +5,13 @@
     <meta charset="utf-8">
     <meta name="description" content="&lt;model-viewer&gt; template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link type="text/css" href="./styles.css" rel="stylesheet"/>
+    <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body>
     <!-- <model-viewer> HTML element -->
-    <model-viewer src="https://drive.google.com/uc?id=1SjF1m5wfE0p6YW8C4qiKbJQaQ17jUss1" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="https://drive.google.com//uc?id=1N6YtAxlSwAYTiOxf5ElSWp9FM6JXCfUS" shadow-intensity="1">
+    <model-viewer src="lobe_coefficient.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1">
       <div class="progress-bar hide" slot="progress-bar">
           <div class="update-bar"></div>
       </div>
@@ -17,10 +19,10 @@
           View in your space
       </button>
       <div id="ar-prompt">
-          <img src="https://drive.google.com/uc?id=1IPojFPtJscZbDY--ZbGO182dbMf1oDSm/">
+          <img src="ar_hand_prompt.png">
       </div>
     </model-viewer>  
-    <script src="https://drive.google.com/uc?id=1nk5Hw83z8gTSHm6Q_sHjZ75dhqqiCrzH"></script>
+    <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   </body>
