@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>UF</title>
+    <title>Tract Explorer</title>
     <meta charset="utf-8">
     <meta name="description" content="&lt;model-viewer&gt; template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body>
-<model-viewer id = "tracts-demo" src="5k_tracts_mesh.glb" poster="tractograms_final.png" shadow-intensity="1" ar camera-controls touch-action="pan-y" alt="A 3D model carousel">
+<model-viewer id = "tracts-demo" src="5k_tracts_mesh.glb" poster="tractograms_final.png" shadow-intensity="1" ar camera-controls touch-action="pan-y" alt="3D White Matter Tracts">
   
   <button slot="ar-button" id="ar-button">
     View in your space
@@ -29,6 +29,7 @@
     <select id="src">
       <option value="5k_tracts_mesh.glb">All tracts</option>
       <option value="L_UF.glb">Uncinate Fasciculus</option>
+      <option value="AF_L.glb">Arcuate Fasciculus</option>
     </select>
   </div>
 </model-viewer>
