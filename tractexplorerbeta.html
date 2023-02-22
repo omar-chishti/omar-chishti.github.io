@@ -53,9 +53,9 @@
       <option value="AC.glb">Anterior Commissure</option>
       <option value="CC.glb">Corpus Callosum</option>
       <option value="L_CB.glb">Cerebellum</option>
-    </select>
+    </select><br>
     <label for="show-brain">Show Brain:</label>
-    <input id="show-brain" type="checkbox" checked="true">
+    <input id="show-brain" type="checkbox" checked="false">
   </div>
 </model-viewer>
 
@@ -64,6 +64,14 @@
   const checkbox = modelViewer.querySelector('#show-brain');
 
   modelViewer.querySelector('#src').addEventListener('input', (event) => {
+    modelViewer.poster = event.target.value + '_poster.png';
+    if (checkbox.checked) {
+      modelViewer.src = event.target.value + '_glass.glb';
+    } else {
+      modelViewer.src = event.target.value;
+    }
+  });
+  modelViewer.querySelector('#show-brain').addEventListener('input', (event) => {
     modelViewer.poster = event.target.value + '_poster.png';
     if (checkbox.checked) {
       modelViewer.src = event.target.value + '_glass.glb';
