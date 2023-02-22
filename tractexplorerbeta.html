@@ -71,14 +71,12 @@
     }
   });
   checkbox.addEventListener('change', () => {
-    modelViewer.querySelector('#src').addEventListener('input', (event) => {
-      modelViewer.poster = event.target.value + '_poster.png';
+      modelViewer.poster = modelViewer.querySelector('#src').value + '_poster.png';
       if (checkbox.checked) {
-        modelViewer.src = event.target.value + '_glass.glb';
+        modelViewer.src = modelViewer.querySelector('#src').value + '_glass.glb';
       } else {
-        modelViewer.src = event.target.value;
+        modelViewer.src = modelViewer.querySelector('#src').value;
       }
-  });
   });
 
 
