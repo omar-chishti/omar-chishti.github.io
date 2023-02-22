@@ -35,7 +35,6 @@
       <option value="L_mLF.glb">Middle Longitudinal Fasciculus</option>
       <option value="L_SLF.glb">Superior Longitudinal Fasciculus</option>
       <option value="L_VOF.glb">Vertical Occipital Fasciculus</option>
-      <option value="L_PAT.glb">Parietal Aslant Tract</option>
       <option value="L_FAT.glb">Frontal Aslant Tract</option>
       <option value="AR_L.glb">Acoustic Radiation</option>
       <option value="L_CG.glb">Cingulum</option>
@@ -71,13 +70,15 @@
       modelViewer.src = event.target.value;
     }
   });
-  modelViewer.querySelector('#show-brain').addEventListener('input', (event) => {
-    modelViewer.poster = event.target.value + '_poster.png';
-    if (checkbox.checked) {
-      modelViewer.src = event.target.value + '_glass.glb';
-    } else {
-      modelViewer.src = event.target.value;
-    }
+  checkbox.addEventListener('change', () => {
+    modelViewer.querySelector('#src').addEventListener('input', (event) => {
+      modelViewer.poster = event.target.value + '_poster.png';
+      if (checkbox.checked) {
+        modelViewer.src = event.target.value + '_glass.glb';
+      } else {
+        modelViewer.src = event.target.value;
+      }
+  });
   });
 
 
