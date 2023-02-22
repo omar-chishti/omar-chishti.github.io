@@ -54,16 +54,25 @@
       <option value="CC.glb">Corpus Callosum</option>
       <option value="L_CB.glb">Cerebellum</option>
     </select>
+    <label for="show-brain">Show Brain:</label>
+    <input id="show-brain" type="checkbox" checked="true">
   </div>
 </model-viewer>
 
 <script type="module">
   const modelViewer = document.querySelector('#tracts-demo');
+  const checkbox = modelViewer.querySelector('#show-brain');
 
   modelViewer.querySelector('#src').addEventListener('input', (event) => {
-    modelViewer.src = event.target.value;
     modelViewer.poster = event.target.value + '_poster.png';
+    if (checkbox.checked) {
+      modelViewer.src = event.target.value + '_glass.glb';
+    } else {
+      modelViewer.src = event.target.value;
+    }
   });
+
+
 
 </script>
 </model-viewer>
