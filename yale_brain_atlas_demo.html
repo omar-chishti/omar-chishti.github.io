@@ -162,12 +162,14 @@
     <script type ="module">
       const modelViewer = document.getElementById("yale_brain_atlas");
       const hotspots = header.getElementsByClassName("hotspot");
+      var checkbox = false
+      var postervisible = false
       modelViewer.addEventListener('dblclick', () => modelViewer.showPoster());
-      modelViewer.addEventListener('dblclick', () => var checkbox = true;
-      modelViewer.addEventListener('dblclick', () => var postervisible = true;                            
+      modelViewer.addEventListener('dblclick', () => checkbox = true);
+      modelViewer.addEventListener('dblclick', () => postervisible = true);                            
       modelViewer.addEventListener('click', () => modelViewer.dismissPoster());
-      modelViewer.addEventListener('click', () => var checkbox = false);
-      modelViewer.addEventListener('click', () => var postervisible = false);
+      modelViewer.addEventListener('click', () => checkbox = false);
+      modelViewer.addEventListener('click', () => postervisible = false);
 
   function setVisibility(element) {
     if (checkbox) {
