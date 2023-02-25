@@ -10,8 +10,141 @@
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body>
+  <style>
+  .hotspot {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 0;
+    background-color: white;
+    box-sizing: border-box;
+    pointer-events: none;
+ }
+
+
+.HotspotAnnotation{
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.8);
+  display: block;
+  font-family: Futura, Helvetica Neue, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  left: calc(100% + 1em);
+  max-width: 128px;
+  overflow-wrap: break-word;
+  padding: 0.5em 1em;
+  position: absolute;
+  top: 50%;
+  width: max-content;
+ }
+
+  .hotspot[slot="hotspot-3"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-4"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-5"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-6"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-7"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-8"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-9"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-11"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-13"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-14"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-15"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-17"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-19"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-22"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  @keyframes circle {
+  from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+  }
+
+  @keyframes elongate {
+  from { transform: translateX(100px); }
+  to   { transform: translateX(-100px); }
+  }
+  /* This keeps child nodes hidden while the element loads */
+  :not(:defined) > * {
+    display: none;
+  }
+</style>
     <!-- <model-viewer> HTML element -->
     <model-viewer id = "yale_brain_atlas" src="yale_atlas.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="yale_atlas.png" shadow-intensity="1" auto-rotate camera-orbit="-193.2deg 100.5deg 374.8m" field-of-view="29.21deg">
+    <button class="hotspot" slot="hotspot-3" data-surface="301 0 37 173 36 0.307 0.424 0.269" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Temporal
+            Body</div>
+    </button><button class="hotspot" slot="hotspot-4" data-surface="164 0 279 116 114 0.017 0.358 0.625" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Occipital</div>
+    </button><button class="hotspot" slot="hotspot-5" data-surface="66 0 130 175 141 0.581 0.388 0.031" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Frontal Pole</div>
+    </button><button class="hotspot" slot="hotspot-6" data-surface="6 0 102 101 104 0.439 0.345 0.216" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Angular
+            Gyrus</div>
+    </button><button class="hotspot" slot="hotspot-7" data-surface="281 0 229 183 217 0.049 0.431 0.520" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Supra-marginal
+            Gyrus</div>
+    </button><button class="hotspot" slot="hotspot-8" data-surface="206 0 158 175 159 0.521 0.125 0.355" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Superior Parietal</div>
+    </button><button class="hotspot" slot="hotspot-9" data-surface="238 0 199 136 214 0.184 0.366 0.450" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Sensory</div>
+    </button><button class="hotspot" slot="hotspot-11" data-surface="118 0 165 166 167 0.383 0.389 0.228" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Motor</div>
+    </button><button class="hotspot" slot="hotspot-13" data-surface="263 0 193 116 117 0.246 0.332 0.422" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Superior Frontal</div>
+    </button><button class="hotspot" slot="hotspot-14" data-surface="136 0 245 219 220 0.082 0.609 0.309" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Middle Frontal</div>
+    </button><button class="hotspot" slot="hotspot-15" data-surface="344 0 147 304 68 0.475 0.456 0.069" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Inferior Frontal</div>
+    </button><button class="hotspot" slot="hotspot-17" data-surface="31 0 68 34 35 0.609 0.028 0.363" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Orbital Frontal</div>
+    </button><button class="hotspot" slot="hotspot-19" data-surface="328 0 154 130 129 0.293 0.252 0.455" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Temporal Pole</div>
+    </button><button class="hotspot" slot="hotspot-22" data-surface="150 0 42 1 29 0.525 0.330 0.146" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Temporal Occipital</div>
+    </button>
     <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
     </div>
@@ -26,10 +159,23 @@
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <script>
+    <script type ="module">
       const modelViewer = document.getElementById("yale_brain_atlas");
-      modelViewer.addEventListener('dblclick', () => modelViewer.showPoster());
+      modelViewer.addEventListener('dblclick', () => modelViewer.showPoster());                         
       modelViewer.addEventListener('click', () => modelViewer.dismissPoster());
-     </script>
+
+
+
+  modelViewer.addEventListener('dblclick', () => {
+    modelViewer.querySelectorAll('button').forEach((hotspot) => {
+      hotspot.style.visibility = 'hidden'
+    });
+  });
+  modelViewer.addEventListener('click', () => {
+    modelViewer.querySelectorAll('button').forEach((hotspot) => {
+      hotspot.style.visibility = 'visible'
+    });
+  });
+  </script>
   </body>
 </html>
