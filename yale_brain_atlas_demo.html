@@ -12,6 +12,7 @@
   <body>
   <style type="text/css">>
   .hotspot {
+  display: block;
   background: #fff;
   border-radius: 32px;
   border: 0;
@@ -23,7 +24,7 @@
   position: relative;
   transition: opacity 0.3s;
   width: 24px;
-}
+ }
 
 .hotspot:not([data-visible]) {
   background: transparent;
@@ -44,7 +45,7 @@
 .hotspot > * {
   opacity: 1;
   transform: translateY(-50%);
-}
+ }
 
 .HotspotAnnotation{
   background: #fff;
@@ -62,7 +63,7 @@
   position: absolute;
   top: 50%;
   width: max-content;
-}
+ }
 
 .hotspot:not([data-visible]) > * {
   opacity: 0;
@@ -70,7 +71,10 @@
   transform: translateY(calc(-50% + 4px));
   transition: transform 0.3s, opacity 0.3s;
 }
-
+  .hotspot[slot="hotspot-3"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
   .hotspot[slot="hotspot-4"]{
     --min-hotspot-opacity: 0;
     background-color: white;
@@ -123,7 +127,15 @@
     --min-hotspot-opacity: 0;
     background-color: white;
   }
+  @keyframes circle {
+  from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+  }
 
+  @keyframes elongate {
+  from { transform: translateX(100px); }
+  to   { transform: translateX(-100px); }
+  }
   /* This keeps child nodes hidden while the element loads */
   :not(:defined) > * {
     display: none;
