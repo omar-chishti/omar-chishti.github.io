@@ -161,35 +161,21 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script type ="module">
       const modelViewer = document.getElementById("yale_brain_atlas");
-      var checkbox = false
-      var postervisible = false
-      modelViewer.addEventListener('dblclick', () => modelViewer.showPoster());
-      modelViewer.addEventListener('dblclick', () => checkbox = true);
-      modelViewer.addEventListener('dblclick', () => postervisible = true);                            
+      modelViewer.addEventListener('dblclick', () => modelViewer.showPoster());                         
       modelViewer.addEventListener('click', () => modelViewer.dismissPoster());
-      modelViewer.addEventListener('click', () => checkbox = false);
-      modelViewer.addEventListener('click', () => postervisible = false);
 
-  function setVisibility(element) {
-    if (checkbox) {
-      if (postervisible) {
-      element.classList.add('hide');
-      }
-    } else {
-      element.classList.remove('hide');
-    }
-  }
+
 
   modelViewer.addEventListener('dblclick', () => {
     modelViewer.querySelectorAll('button').forEach((hotspot) => {
-      setVisibility(hotspot);
+      hotspot.style.visibility = 'hidden'
     });
   });
   modelViewer.addEventListener('click', () => {
     modelViewer.querySelectorAll('button').forEach((hotspot) => {
-      setVisibility(hotspot);
+      hotspot.style.visibility = 'visible'
     });
   });
-     </script>
+  </script>
   </body>
 </html>
