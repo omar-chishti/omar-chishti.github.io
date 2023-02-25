@@ -10,6 +10,76 @@
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body>
+    <style>
+  .hotspot{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+
+  .hotspot[slot="hotspot-4"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-5"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-6"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-7"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-8"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-9"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-11"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-13"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-14"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-15"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-17"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-19"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+  .hotspot[slot="hotspot-22"]{
+    --min-hotspot-opacity: 0;
+    background-color: white;
+  }
+
+  /* This keeps child nodes hidden while the element loads */
+  :not(:defined) > * {
+    display: none;
+  }
+</style>
     <!-- <model-viewer> HTML element -->
     <model-viewer id = "yale_brain_atlas" src="yale_atlas.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="yale_atlas.png" shadow-intensity="1" auto-rotate camera-orbit="-193.2deg 100.5deg 374.8m" field-of-view="29.21deg">
     <button class="Hotspot" slot="hotspot-3" data-surface="301 0 37 173 36 0.307 0.424 0.269" data-visibility-attribute="visible">
