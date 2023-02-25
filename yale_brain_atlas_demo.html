@@ -22,20 +22,6 @@
     pointer-events: none;
  }
 
-.hotspot:not([data-visible]) {
-  background: transparent;
-  border: 4px solid #fff;
-  box-shadow: none;
-  height: 20px;
-  pointer-events: none;
-  width: 20px;
-}
-
-
-.hotspot > * {
-  opacity: 1;
-  transform: translateY(-50%);
- }
 
 .HotspotAnnotation{
   background: #fff;
@@ -55,12 +41,6 @@
   width: max-content;
  }
 
-.hotspot:not([data-visible]) > * {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(calc(-50% + 4px));
-  transition: transform 0.3s, opacity 0.3s;
-}
   .hotspot[slot="hotspot-3"]{
     --min-hotspot-opacity: 0;
     background-color: white;
