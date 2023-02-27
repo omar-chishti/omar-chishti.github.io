@@ -110,6 +110,42 @@
   :not(:defined) > * {
     display: none;
   }
+  #controls {
+    position: absolute;
+    top: 16px;
+    left: 40%;
+    max-width: unset;
+    transform: unset;
+    pointer-events: auto;
+    z-index: 100;
+  }
+  .dim{
+    background: #fff;
+    border-radius: 4px;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    color: rgba(0, 0, 0, 0.8);
+    display: block;
+    font-family: Futura, Helvetica Neue, sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    max-width: 128px;
+    overflow-wrap: break-word;
+    padding: 0.5em 1em;
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    transform: translate3d(-50%, -50%, 0);
+    pointer-events: none;
+    --min-hotspot-opacity: 0;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .dim{
+      font-size: 3vw;
+    }
+  }
 </style>
     <!-- <model-viewer> HTML element -->
     <model-viewer id = "yale_brain_atlas" src="yale_atlas.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="yale_atlas.png" shadow-intensity="1" auto-rotate camera-orbit="-193.2deg 100.5deg 374.8m" field-of-view="29.21deg">
@@ -181,19 +217,15 @@
       hotspot.style.visibility = 'visible'
     });
   });
-  const checkbox = modelViewer.querySelector('show-annotations');
+  const checkbox = modelViewer.querySelector('#show-annotations');
 
-  function setVisibility(element) {
-    if (checkbox.checked) {
+  checkbox.addEventListener('change', () => {
+    modelViewer.querySelectorAll('button').forEach((hotspot) => {
+      if (checkbox.checked) {
       hotspot.style.visibility = 'visible';
     } else {
       hotspot.style.visibility = 'hidden';
     }
-  }
-
-  checkbox.addEventListener('change', () => {
-    modelViewer.querySelectorAll('button').forEach((hotspot) => {
-      setVisibility(hotspot);
     });
   });
   </script>
