@@ -215,7 +215,11 @@
   });
   modelViewer.addEventListener('click', () => {
     modelViewer.querySelectorAll('button').forEach((hotspot) => {
-      hotspot.style.visibility = 'visible'
+      if (checkbox.checked) {
+      hotspot.style.visibility = 'visible';
+    } else {
+      hotspot.style.visibility = 'hidden';
+    }
     });
   });
   const checkbox = modelViewer.querySelector('#show-annotations');
