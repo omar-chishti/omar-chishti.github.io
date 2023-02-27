@@ -155,6 +155,11 @@
         <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
     </div>
 </model-viewer>
+    
+    <div id="controls" class="dim">
+    <label for="show-annotations">Show Annotations:</label>
+    <input id="show-annotations" type="checkbox" checked="true">
+  </div>
 
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
@@ -174,6 +179,21 @@
   modelViewer.addEventListener('click', () => {
     modelViewer.querySelectorAll('button').forEach((hotspot) => {
       hotspot.style.visibility = 'visible'
+    });
+  });
+  const checkbox = modelViewer.querySelector('show-annotations');
+
+  function setVisibility(element) {
+    if (checkbox.checked) {
+      hotspot.style.visibility = 'visible';
+    } else {
+      hotspot.style.visibility = 'hidden';
+    }
+  }
+
+  checkbox.addEventListener('change', () => {
+    modelViewer.querySelectorAll('button').forEach((hotspot) => {
+      setVisibility(hotspot);
     });
   });
   </script>
