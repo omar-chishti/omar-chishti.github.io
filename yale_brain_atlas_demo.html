@@ -112,8 +112,8 @@
   }
   #controls {
     position: absolute;
-    top: 16px;
-    left: 40%;
+    bottom: 16px;
+    left: 16px;
     max-width: unset;
     transform: unset;
     pointer-events: auto;
@@ -217,7 +217,7 @@
       hotspot.style.visibility = 'visible'
     });
   });
-  const checkbox = modelViewer.querySelector('#show-annotations');
+  const checkbox = modelViewer.querySelector('show-annotations');
 
   checkbox.addEventListener('change', () => {
     modelViewer.querySelectorAll('button').forEach((hotspot) => {
