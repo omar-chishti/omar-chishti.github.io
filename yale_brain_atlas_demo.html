@@ -201,7 +201,7 @@
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script type ="module">
-      const modelViewer = document.getElementById("yale_brain_atlas");
+      const modelViewer = document.querySelector("#yale_brain_atlas");
       modelViewer.addEventListener('dblclick', () => modelViewer.showPoster());                         
       modelViewer.addEventListener('click', () => modelViewer.dismissPoster());
 
@@ -217,7 +217,7 @@
       hotspot.style.visibility = 'visible'
     });
   });
-  const checkbox = modelViewer.querySelector('show-annotations');
+  const checkbox = modelViewer.querySelector('#show-annotations');
 
   checkbox.addEventListener('change', () => {
     modelViewer.querySelectorAll('button').forEach((hotspot) => {
