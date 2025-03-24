@@ -48,47 +48,68 @@
         </select>
         <label for="show-brain">Show Brain:</label>
         <input id="show-brain" type="checkbox">
-        <!-- Show Poster Button -->
-  <button id="show-poster">Show Poster</button>
+        <label for="show-poster">Show Poster:</label>
+        <input id="show-poster" type="checkbox">
 
-  <!-- Dark Mode Toggle -->
-  <label for="dark-mode">Dark Mode:</label>
-  <input id="dark-mode" type="checkbox">
+        <!-- Dark Mode Toggle -->
+        <label for="dark-mode">Dark Mode:</label>
+        <input id="dark-mode" type="checkbox">
       </div>
     </model-viewer>
     
     <script type="module">
+  <script type="module">
   const modelViewer = document.querySelector('#tracts-demo');
-  const checkbox = modelViewer.querySelector('#show-brain');
-
-  // Update the model and poster based on the selection
+  const checkboxBrain = modelViewer.querySelector('#show-brain');
+  const checkboxPoster = modelViewer.querySelector('#show-poster');
+  const darkModeToggle = modelViewer.querySelector('#dark-mode');
+  const controls = modelViewer.querySelector('#controls');
+  // When the tract is changed, update the model and poster
   modelViewer.querySelector('#src').addEventListener('input', (event) => {
-    modelViewer.poster = event.target.value + '_poster.png';
-    if (checkbox.checked) {
-      modelViewer.src = event.target.value + '_glass.glb';
+    const tractValue = event.target.value;
+    modelViewer.poster = tractValue + '_poster.png';
+
+    if (checkboxBrain.checked) {
+      modelViewer.src = tractValue + '_glass.glb';
     } else {
-      modelViewer.src = event.target.value;
+      modelViewer.src = tractValue;
+    }
+
+    // Show or hide the poster based on checkbox state
+    if (checkboxPoster.checked) {
+      modelViewer.showPoster();
+    } else {
+      modelViewer.dismissPoster();
     }
   });
 
-  // When the checkbox is toggled, update the model and poster
-  checkbox.addEventListener('change', () => {
-    modelViewer.poster = modelViewer.querySelector('#src').value + '_poster.png';
-    if (checkbox.checked) {
-      modelViewer.src = modelViewer.querySelector('#src').value + '_glass.glb';
+  // When the "Show Brain" checkbox is changed, update the model source
+  checkboxBrain.addEventListener('change', () => {
+    const tractValue = modelViewer.querySelector('#src').value;
+    modelViewer.poster = tractValue + '_poster.png';
+
+    if (checkboxBrain.checked) {
+      modelViewer.src = tractValue + '_glass.glb';
     } else {
-      modelViewer.src = modelViewer.querySelector('#src').value;
+      modelViewer.src = tractValue;
     }
   });
 
-  // Dark Mode Toggle
-  document.getElementById("dark-mode").addEventListener("change", (event) => {
-    if (event.target.checked) {
-      document.body.style.backgroundColor = "#121212";
-      document.body.style.color = "#ffffff";
+  // When the "Show Poster" checkbox is changed, display or dismiss the poster
+  checkboxPoster.addEventListener('change', () => {
+    if (checkboxPoster.checked) {
+      modelViewer.showPoster();
     } else {
-      document.body.style.backgroundColor = "#ffffff";
-      document.body.style.color = "#000000";
+      modelViewer.dismissPoster();
+    }
+  });
+
+  // Dark mode toggle event listener
+  darkModeToggle.addEventListener('change', () => {
+    if (darkModeToggle.checked) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
     }
   });
 </script>
@@ -98,23 +119,30 @@
         transition: background 0.3s ease, color 0.3s ease;
       }
       .dark-mode {
-        background: #121212;
-        color: white;
-      }
+        background-color: #1a1a1a;
+    color: white;
+  }
 
-      #theme-toggle {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 8px;
-        background: #fff;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      .dark-mode #theme-toggle {
-        background: #444;
-        color: white;
-      }
+  .dark-mode #controls {
+    background-color: #333;
+    color: white;
+  }
+
+  .dark-mode #controls label {
+    color: white;
+  }
+
+  .dark-mode #controls select,
+  .dark-mode #controls input {
+    background-color: #444;
+    color: white;
+  }
+
+  /* Additional styling for model viewer and other elements in dark mode */
+  .dark-mode #tracts-demo {
+    background-color: #333;
+  }
+
 
   /* This keeps child nodes hidden while the element loads */
   :not(:defined) > * {
