@@ -9,7 +9,6 @@
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body>
-    <button id="theme-toggle">Toggle Dark Mode</button>
     
     <model-viewer id="tracts-demo" src="5k_tracts_mesh.glb" poster="tractograms_final.png" shadow-intensity="1" ar camera-controls touch-action="pan-y" alt="3D White Matter Tracts">
       <button slot="ar-button" id="ar-button">View in your space</button>
@@ -57,7 +56,6 @@
       </div>
     </model-viewer>
     
-    <script type="module">
   <script type="module">
   const modelViewer = document.querySelector('#tracts-demo');
   const checkboxBrain = modelViewer.querySelector('#show-brain');
