@@ -48,29 +48,50 @@
         </select>
         <label for="show-brain">Show Brain:</label>
         <input id="show-brain" type="checkbox">
+        <!-- Show Poster Button -->
+  <button id="show-poster">Show Poster</button>
+
+  <!-- Dark Mode Toggle -->
+  <label for="dark-mode">Dark Mode:</label>
+  <input id="dark-mode" type="checkbox">
       </div>
     </model-viewer>
     
     <script type="module">
-      const modelViewer = document.querySelector('#tracts-demo');
-      const checkbox = document.querySelector('#show-brain');
-      const select = document.querySelector('#src');
-      
-      select.addEventListener('input', () => {
-        const value = select.value;
-        modelViewer.poster = value + '_poster.png';
-        modelViewer.src = checkbox.checked ? value + '_glass.glb' : value;
-      });
-      
-      checkbox.addEventListener('change', () => {
-        const value = select.value;
-        modelViewer.src = checkbox.checked ? value + '_glass.glb' : value;
-      });
-      
-      document.getElementById("theme-toggle").addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-      });
-    </script>
+  const modelViewer = document.querySelector('#tracts-demo');
+  const checkbox = modelViewer.querySelector('#show-brain');
+
+  // Update the model and poster based on the selection
+  modelViewer.querySelector('#src').addEventListener('input', (event) => {
+    modelViewer.poster = event.target.value + '_poster.png';
+    if (checkbox.checked) {
+      modelViewer.src = event.target.value + '_glass.glb';
+    } else {
+      modelViewer.src = event.target.value;
+    }
+  });
+
+  // When the checkbox is toggled, update the model and poster
+  checkbox.addEventListener('change', () => {
+    modelViewer.poster = modelViewer.querySelector('#src').value + '_poster.png';
+    if (checkbox.checked) {
+      modelViewer.src = modelViewer.querySelector('#src').value + '_glass.glb';
+    } else {
+      modelViewer.src = modelViewer.querySelector('#src').value;
+    }
+  });
+
+  // Dark Mode Toggle
+  document.getElementById("dark-mode").addEventListener("change", (event) => {
+    if (event.target.checked) {
+      document.body.style.backgroundColor = "#121212";
+      document.body.style.color = "#ffffff";
+    } else {
+      document.body.style.backgroundColor = "#ffffff";
+      document.body.style.color = "#000000";
+    }
+  });
+</script>
     
     <style>
       body {
@@ -80,10 +101,7 @@
         background: #121212;
         color: white;
       }
-      model-viewer {
-        background-color: #FFFFFF;
-        overflow-x: hidden;
-      }
+
       #theme-toggle {
         position: absolute;
         top: 10px;
@@ -97,6 +115,123 @@
         background: #444;
         color: white;
       }
+
+  /* This keeps child nodes hidden while the element loads */
+  :not(:defined) > * {
+    display: none;
+  }
+
+  model-viewer {
+    background-color: #FFFFFF;
+    overflow-x: hidden;
+  }
+
+  #ar-button {
+    background-image: 'hand.png';
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 12px 50%;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: 132px;
+    padding: 0px 16px 0px 40px;
+    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    color:#4285f4;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 18px;
+    border: 1px solid #DADCE0;
+  }
+
+  #ar-button:active {
+    background-color: #E8EAED;
+  }
+
+  #ar-button:focus {
+    outline: none;
+  }
+
+  #ar-button:focus-visible {
+    outline: 1px solid #4285f4;
+  }
+
+  @keyframes circle {
+    from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+    to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+  }
+
+  @keyframes elongate {
+    from { transform: translateX(100px); }
+    to   { transform: translateX(-100px); }
+  }
+
+  model-viewer > #ar-prompt {
+    position: absolute;
+    left: 50%;
+    bottom: 175px;
+    animation: elongate 2s infinite ease-in-out alternate;
+    display: none;
+  }
+
+  model-viewer[ar-status="session-started"] > #ar-prompt {
+    display: block;
+  }
+
+  model-viewer > #ar-prompt > img {
+    animation: circle 4s linear infinite;
+  }
+
+  model-viewer > #ar-failure {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 175px;
+    display: none;
+  }
+
+  model-viewer[ar-tracking="not-tracking"] > #ar-failure {
+    display: block;
+  }
+  #controls {
+    position: absolute;
+    top: 16px;
+    left: 40%;
+    max-width: unset;
+    transform: unset;
+    pointer-events: auto;
+    z-index: 100;
+  }
+  .dim{
+    background: #fff;
+    border-radius: 4px;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    color: rgba(0, 0, 0, 0.8);
+    display: block;
+    font-family: Futura, Helvetica Neue, sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    max-width: 128px;
+    overflow-wrap: break-word;
+    padding: 0.5em 1em;
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    transform: translate3d(-50%, -50%, 0);
+    pointer-events: none;
+    --min-hotspot-opacity: 0;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .dim{
+      font-size: 3vw;
+    }
+  }
     </style>
     
     <script type="module" src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer.min.js"></script>
