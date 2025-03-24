@@ -45,14 +45,18 @@
                 <option value="CC.glb">Corpus Callosum</option>
                 <option value="L_CB.glb">Cerebellum</option>
         </select>
-        <label for="show-brain">Show Brain:</label>
-        <input id="show-brain" type="checkbox">
-        <label for="show-poster">Information:</label>
-        <input id="show-poster" type="checkbox">
+        <!-- Controls (Checkboxes) Section -->
+        <div id="controls-checkboxes">
+          <label for="show-brain">Show Brain:</label>
+          <input id="show-brain" type="checkbox">
+          
+          <label for="show-poster">Information:</label>
+          <input id="show-poster" type="checkbox">
 
-        <!-- Dark Mode Toggle -->
-        <label for="dark-mode">Dark Mode:</label>
-        <input id="dark-mode" type="checkbox" checked>
+          <!-- Dark Mode Toggle -->
+          <label for="dark-mode">Dark Mode:</label>
+          <input id="dark-mode" type="checkbox" checked>
+        </div>
       </div>
     </model-viewer>
     
@@ -283,6 +287,10 @@
   @keyframes elongate {
     from { transform: translateX(100px); }
     to   { transform: translateX(-100px); }
+  }
+
+  #controls-checkboxes {
+    margin-top: 10px;
   }
 
   /* AR prompt and failure styles */
