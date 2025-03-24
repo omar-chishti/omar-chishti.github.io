@@ -47,12 +47,12 @@
         </select>
         <label for="show-brain">Show Brain:</label>
         <input id="show-brain" type="checkbox">
-        <label for="show-poster">Show Poster:</label>
+        <label for="show-poster">Information:</label>
         <input id="show-poster" type="checkbox">
 
         <!-- Dark Mode Toggle -->
         <label for="dark-mode">Dark Mode:</label>
-        <input id="dark-mode" type="checkbox">
+        <input id="dark-mode" type="checkbox" checked>
       </div>
     </model-viewer>
     
@@ -117,13 +117,23 @@
         transition: background 0.3s ease, color 0.3s ease;
       }
       .dark-mode {
-        background-color: #1a1a1a;
+        background-color: #000000;
     color: white;
   }
 
   .dark-mode #controls {
-    background-color: #333;
+    background-color: #333; /* Dark background for controls */
     color: white;
+    position: absolute;
+    top: 16px;
+    left: 40%;
+    max-width: unset;
+    transform: unset;
+    pointer-events: auto;
+    z-index: 100;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .dark-mode #controls label {
@@ -134,6 +144,39 @@
   .dark-mode #controls input {
     background-color: #444;
     color: white;
+    border: 1px solid #555;
+    padding: 8px;
+    border-radius: 4px;
+    margin: 5px;
+  }
+
+  /* Dim class styles */
+  .dim {
+    background: #fff;
+    border-radius: 4px;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    color: rgba(0, 0, 0, 0.8);
+    display: block;
+    font-family: Futura, Helvetica Neue, sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    max-width: 128px;
+    overflow-wrap: break-word;
+    padding: 0.5em 1em;
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    transform: translate3d(-50%, -50%, 0);
+    pointer-events: none;
+    --min-hotspot-opacity: 0;
+  }
+
+  /* Adjusted dark mode for .dim class */
+  .dark-mode .dim {
+    background: #444;
+    color: #fff;
   }
 
   /* Additional styling for model viewer and other elements in dark mode */
