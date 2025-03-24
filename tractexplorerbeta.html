@@ -106,33 +106,57 @@
   darkModeToggle.addEventListener('change', () => {
     if (darkModeToggle.checked) {
       document.body.classList.add('dark-mode');
+      localStorage.setItem('dark-mode', 'true');
     } else {
       document.body.classList.remove('dark-mode');
+      localStorage.setItem('dark-mode', 'false');
     }
   });
+
+  // Apply dark mode on load based on localStorage or checkbox state
   document.addEventListener("DOMContentLoaded", () => {
-    const darkModeCheckbox = document.querySelector("#dark-mode-checkbox");
-    const body = document.body;
-
-    // Check the checkbox on page load if dark mode is enabled
-    if (darkModeCheckbox.checked) {
-      body.classList.add("dark-mode");
+    if (localStorage.getItem('dark-mode') === 'true' || darkModeToggle.checked) {
+      document.body.classList.add('dark-mode');
     }
-
-    // Toggle dark mode based on checkbox state
-    darkModeCheckbox.addEventListener("change", () => {
-      if (darkModeCheckbox.checked) {
-        body.classList.add("dark-mode");
-      } else {
-        body.classList.remove("dark-mode");
-      }
-    });
   });
 </script>
     
     <style>
   body {
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.5s ease, color 0.5s ease;
+  }
+  /* Light Mode Styling (default) */
+  #controls {
+    background-color: #fff; /* Light background for controls */
+    color: #000;
+    position: absolute;
+    top: 16px;
+    left: 40%;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    pointer-events: auto;
+  }
+
+  #controls label {
+    color: #000;
+  }
+
+  #controls select,
+  #controls input {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    margin: 5px;
+  }
+
+  #controls select:focus,
+  #controls input:focus {
+    outline: 2px solid #4285f4;
+    border-color: #4285f4;
   }
 
   /* Dark mode styles */
