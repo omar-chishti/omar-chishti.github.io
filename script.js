@@ -17,7 +17,7 @@ function updateModel() {
   
   if (showBrainCheckbox.checked) {
     // Show tract with glass brain overlay
-    modelViewer.src = tractValue.replace('.glb', '_glass.glb');
+    modelViewer.src = tractValue.replace('.glb', '.glb_glass.glb');
   } else {
     // Show tract only
     modelViewer.src = tractValue;
