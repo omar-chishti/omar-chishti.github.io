@@ -1,3 +1,8 @@
+/* ==============================================
+   WHITE MATTER TRACT EXPLORER - STYLESHEET
+   ============================================== */
+
+/* Base Styles */
 :not(:defined) > * {
   display: none;
 }
@@ -11,15 +16,19 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
+  font-family: Futura, Helvetica Neue, sans-serif;
+  background-color: #fff;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
+/* Model Viewer */
 model-viewer {
   width: 100%;
   height: 90%;
   background-color: #ffffff;
 }
 
-
+/* Progress Bar */
 .progress-bar {
   display: block;
   width: 33%;
@@ -49,6 +58,113 @@ model-viewer {
   transition: width 0.3s;
 }
 
+/* Control Panel */
+#controls {
+  background-color: #fff;
+  color: #000;
+  position: absolute;
+  top: 16px;
+  left: 40%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  pointer-events: auto;
+  min-width: 280px;
+  transition: all 0.3s ease;
+}
+
+#controls label {
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+#controls select {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 4px;
+  transition: border-color 0.2s ease;
+}
+
+#controls select:hover {
+  border-color: #4285f4;
+}
+
+#controls select:focus {
+  outline: 2px solid #4285f4;
+  border-color: #4285f4;
+  outline-offset: 0;
+}
+
+#controls-checkboxes {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#controls-checkboxes label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+#controls input[type="checkbox"] {
+  margin-left: 4px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  accent-color: #4285f4;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #000;
+  color: white;
+}
+
+.dark-mode model-viewer {
+  background-color: #000;
+}
+
+.dark-mode #controls {
+  background-color: #222;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode #controls label {
+  color: white;
+}
+
+.dark-mode #controls select {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+}
+
+.dark-mode #controls select:hover {
+  border-color: #4285f4;
+}
+
+.dark-mode #controls-checkboxes {
+  border-top-color: #444;
+}
+
+/* AR Button */
 #ar-button {
   background-image: url(ar_icon.png);
   background-repeat: no-repeat;
@@ -63,11 +179,13 @@ model-viewer {
   padding: 0px 16px 0px 40px;
   font-family: Roboto Regular, Helvetica Neue, sans-serif;
   font-size: 14px;
-  color:#4285f4;
+  color: #4285f4;
   height: 36px;
   line-height: 36px;
   border-radius: 18px;
   border: 1px solid #DADCE0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 #ar-button:active {
@@ -82,6 +200,7 @@ model-viewer {
   outline: 1px solid #4285f4;
 }
 
+/* AR Prompt Animations */
 @keyframes circle {
   from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
   to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
@@ -106,4 +225,32 @@ model-viewer[ar-status="session-started"] > #ar-prompt {
 
 model-viewer > #ar-prompt > img {
   animation: circle 4s linear infinite;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 800px) {
+  #controls {
+    left: 10px;
+    right: 10px;
+    width: auto;
+    min-width: auto;
+  }
+  
+  #controls label {
+    font-size: 13px;
+  }
+  
+  #controls select {
+    font-size: 13px;
+  }
+}
+
+/* Accessibility */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+.js-focus-visible .focus-visible {
+  outline: 2px solid #4285f4;
+  outline-offset: 2px;
 }
