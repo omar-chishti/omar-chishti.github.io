@@ -14,6 +14,11 @@ const darkModeToggle = document.querySelector('#dark-mode');
  */
 function updateModel() {
   const tractValue = tractSelect.value;
+
+  // Visual feedback that loading is happening
+  const controlPanel = document.querySelector('#controls');
+  controlPanel.style.opacity = '0.6';
+  controlPanel.style.pointerEvents = 'none';
   
   if (showBrainCheckbox.checked) {
     // Show tract with glass brain overlay
@@ -58,6 +63,12 @@ tractSelect.addEventListener('input', updateModel);
 showBrainCheckbox.addEventListener('change', updateModel);
 darkModeToggle.addEventListener('change', () => applyDarkMode(darkModeToggle.checked));
 modelViewer.addEventListener('progress', onProgress);
+// Re-enable controls when loaded
+modelViewer.addEventListener('load', () => {
+  const controlPanel = document.querySelector('#controls');
+  controlPanel.style.opacity = '1';
+  controlPanel.style.pointerEvents = 'auto';
+});
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
