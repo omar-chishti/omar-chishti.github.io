@@ -110,8 +110,9 @@ model-viewer {
   padding-top: 12px;
   border-top: 1px solid #e0e0e0;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
 }
 
 #controls-checkboxes label {
@@ -119,7 +120,8 @@ model-viewer {
   align-items: center;
   cursor: pointer;
   font-size: 14px;
-  margin-right: 8px;
+  margin: 0;
+  white-space: nowrap;
 }
 
 #controls input[type="checkbox"] {
