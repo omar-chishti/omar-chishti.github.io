@@ -1,8 +1,26 @@
-/* ==============================================
-   WHITE MATTER TRACT EXPLORER - STYLESHEET
-   ============================================== */
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * WHITE MATTER TRACT EXPLORER
+ * An interactive three-dimensional visualization of human neuroanatomy
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
+ * Typography:
+ *   - Cinzel: Classical serif inspired by Roman inscriptions (Trajan-like)
+ *   - Crimson Text: Refined serif with Garamond/Bembo characteristics
+ *
+ * Design Philosophy:
+ *   - Classical proportions and restraint
+ *   - Let the science speak through the visualization
+ *   - Minimal interface, maximum clarity
+ *
+ * Author: Omar Chishti
+ * Year: 2023
+ */
 
-/* Base Styles */
+/* ─────────────────────────────────────────────────────────────────────────
+   BASE STYLES
+   ───────────────────────────────────────────────────────────────────────── */
+
 :not(:defined) > * {
   display: none;
 }
@@ -16,48 +34,53 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: Futura, Helvetica Neue, sans-serif;
-  background-color: #fff;
+  font-family: 'Crimson Text', Georgia, serif;
+  background-color: #fafafa;
   transition: background 0.5s ease, color 0.5s ease;
 }
 
-/* Footer */
-#main-footer {
+/* ─────────────────────────────────────────────────────────────────────────
+   HEADER: Classical typography and refined presentation
+   ───────────────────────────────────────────────────────────────────────── */
+
+#page-header {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  color: rgba(255, 255, 255, 0.7);
-  padding: 4px 12px;
+  background: linear-gradient(to bottom, #2c2c2c 0%, #1a1a1a 100%);
+  color: #f5f5f5;
+  padding: 16px 24px 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#page-header h1 {
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   text-align: center;
-  font-size: 10px;
-  z-index: 100;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  pointer-events: none;
+  color: #f5f5f5;
 }
 
-#main-footer span {
-  pointer-events: auto;
+#page-header .subtitle {
+  margin: 4px 0 0 0;
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+  text-align: center;
+  color: rgba(245, 245, 245, 0.75);
+  letter-spacing: 0.3px;
 }
 
-#main-footer a {
-  color: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
-  transition: color 0.2s ease;
-  pointer-events: auto;
-}
+/* ─────────────────────────────────────────────────────────────────────────
+   MODAL: Information dialog with classical typography
+   ───────────────────────────────────────────────────────────────────────── */
 
-#main-footer a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.dark-mode #main-footer {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -66,7 +89,7 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.75);
   animation: fadeIn 0.3s ease;
 }
 
@@ -78,29 +101,31 @@ body {
 }
 
 .modal-content {
-  background-color: white;
-  border-radius: 8px;
-  padding: 24px;
-  max-width: 500px;
+  background-color: #fafafa;
+  border-radius: 4px;
+  padding: 32px 36px;
+  max-width: 520px;
   max-height: 80vh;
   overflow-y: auto;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
   animation: slideUp 0.3s ease;
   position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .dark-mode .modal-content {
   background-color: #1a1a1a;
-  color: #e0e0e0;
+  color: #e5e5e5;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .modal-close {
   position: absolute;
-  top: 15px;
+  top: 16px;
   right: 20px;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 300;
-  color: #666;
+  color: #888;
   background: none;
   border: none;
   cursor: pointer;
@@ -116,7 +141,7 @@ body {
 }
 
 .dark-mode .modal-close {
-  color: #aaa;
+  color: #999;
 }
 
 .dark-mode .modal-close:hover {
@@ -124,32 +149,36 @@ body {
 }
 
 .modal-content h2 {
-  margin: 0 0 16px 0;
-  font-size: 24px;
-  color: #667eea;
+  margin: 0 0 20px 0;
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  color: #2c2c2c;
   font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .dark-mode .modal-content h2 {
-  color: #9d9aff;
+  color: #f5f5f5;
 }
 
 .modal-content h3 {
-  margin: 16px 0 8px 0;
-  font-size: 16px;
+  margin: 20px 0 10px 0;
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 17px;
   color: #333;
   font-weight: 600;
 }
 
 .modal-content h4 {
-  margin: 12px 0 6px 0;
-  font-size: 14px;
+  margin: 14px 0 8px 0;
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 15px;
   color: #555;
   font-weight: 600;
 }
 
 .dark-mode .modal-content h3 {
-  color: #e0e0e0;
+  color: #e5e5e5;
 }
 
 .dark-mode .modal-content h4 {
@@ -157,34 +186,57 @@ body {
 }
 
 .modal-content section {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .modal-content p {
-  line-height: 1.5;
-  margin: 6px 0;
-  font-size: 14px;
+  font-family: 'Crimson Text', Georgia, serif;
+  line-height: 1.6;
+  margin: 8px 0;
+  font-size: 15px;
 }
 
 .modal-content ul {
-  line-height: 1.6;
-  margin: 6px 0;
-  padding-left: 20px;
-  font-size: 14px;
+  font-family: 'Crimson Text', Georgia, serif;
+  line-height: 1.7;
+  margin: 8px 0;
+  padding-left: 24px;
+  font-size: 15px;
+}
+
+.modal-content kbd {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 13px;
+  padding: 2px 6px;
+  background-color: #e8e8e8;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .modal-content kbd {
+  background-color: #2a2a2a;
+  border-color: #444;
+  color: #e5e5e5;
 }
 
 .modal-content a {
-  color: #667eea;
-  text-decoration: none;
+  color: #2c2c2c;
+  text-decoration: underline;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 .modal-content a:hover {
-  text-decoration: underline;
+  color: #000;
 }
 
 .dark-mode .modal-content a {
-  color: #9d9aff;
+  color: #d5d5d5;
+}
+
+.dark-mode .modal-content a:hover {
+  color: #fff;
 }
 
 @keyframes fadeIn {
@@ -203,11 +255,16 @@ body {
   }
 }
 
-/* Model Viewer */
+/* ─────────────────────────────────────────────────────────────────────────
+   MODEL VIEWER: Primary 3D visualization canvas
+   ───────────────────────────────────────────────────────────────────────── */
+
 model-viewer {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
+  /* Account for fixed header height */
+  margin-top: 65px;
 }
 
 /* Progress Bar */
@@ -240,62 +297,68 @@ model-viewer {
   transition: width 0.3s;
 }
 
-/* Control Panel */
+/* ─────────────────────────────────────────────────────────────────────────
+   CONTROL PANEL: Tract selection and viewing options
+   ───────────────────────────────────────────────────────────────────────── */
+
 #controls {
-  background-color: #fff;
-  color: #000;
+  background-color: rgba(250, 250, 250, 0.97);
+  color: #2c2c2c;
   position: absolute;
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 12px 16px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 14px 18px;
+  border-radius: 4px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   z-index: 100;
   pointer-events: auto;
-  min-width: 280px;
-  max-width: 400px;
+  min-width: 300px;
+  max-width: 420px;
   transition: all 0.3s ease;
 }
 
 #controls label {
-  color: #000;
+  font-family: 'Crimson Text', Georgia, serif;
+  color: #2c2c2c;
   font-size: 14px;
-  font-weight: 500;
-  margin-right: 8px;
+  font-weight: 600;
+  margin-right: 6px;
 }
 
 #controls select {
   background-color: #fff;
-  color: #000;
+  color: #2c2c2c;
   border: 1px solid #ccc;
   padding: 8px 12px;
-  border-radius: 4px;
+  border-radius: 3px;
   font-size: 14px;
-  font-family: inherit;
+  font-family: 'Crimson Text', Georgia, serif;
   cursor: pointer;
   width: 100%;
   margin-top: 4px;
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 #controls select:hover {
-  border-color: #4285f4;
+  border-color: #888;
+  background-color: #fafafa;
 }
 
 #controls select:focus {
-  outline: 2px solid #4285f4;
-  border-color: #4285f4;
+  outline: 2px solid #2c2c2c;
+  border-color: #2c2c2c;
   outline-offset: 0;
 }
 
 #controls-checkboxes {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid #e0e0e0;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
   justify-content: space-between;
 }
@@ -304,17 +367,18 @@ model-viewer {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
   margin: 0;
   white-space: nowrap;
 }
 
 #controls input[type="checkbox"] {
-  margin-left: 4px;
+  margin-left: 6px;
   cursor: pointer;
-  width: 16px;
-  height: 16px;
-  accent-color: #4285f4;
+  width: 15px;
+  height: 15px;
+  accent-color: #2c2c2c;
 }
 
 #info-button {
@@ -322,7 +386,7 @@ model-viewer {
   color: #666;
   border: 1px solid #ccc;
   padding: 6px;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -335,12 +399,46 @@ model-viewer {
 
 #info-button:hover {
   background-color: #f5f5f5;
-  border-color: #4285f4;
-  color: #4285f4;
+  border-color: #2c2c2c;
+  color: #2c2c2c;
 }
 
 #info-button:active {
-  transform: scale(0.95);
+  transform: scale(0.96);
+}
+
+.dark-mode #controls {
+  background-color: rgba(26, 26, 26, 0.97);
+  color: #e5e5e5;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode #controls label {
+  color: #e5e5e5;
+}
+
+.dark-mode #controls select {
+  background-color: #2a2a2a;
+  color: #e5e5e5;
+  border-color: #444;
+}
+
+.dark-mode #controls select:hover {
+  border-color: #666;
+  background-color: #333;
+}
+
+.dark-mode #controls select:focus {
+  outline-color: #e5e5e5;
+  border-color: #e5e5e5;
+}
+
+.dark-mode #controls-checkboxes {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode #controls input[type="checkbox"] {
+  accent-color: #e5e5e5;
 }
 
 .dark-mode #info-button {
@@ -349,9 +447,9 @@ model-viewer {
 }
 
 .dark-mode #info-button:hover {
-  background-color: #444;
-  border-color: #9d9aff;
-  color: #9d9aff;
+  background-color: #333;
+  border-color: #e5e5e5;
+  color: #e5e5e5;
 }
 
 /* Dark Mode */
