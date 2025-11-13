@@ -26,6 +26,8 @@ This web-based application provides an interactive interface for viewing and man
 - Vanilla JavaScript
 - [Google Model Viewer](https://modelviewer.dev/) (Web Component)
 - GLB (GL Transmission Format) 3D models
+- Blender (for creating models)
+- DSI Studio (for processing difussion MRI data)
 
 ## Live Demo
 
@@ -141,8 +143,9 @@ Copyright (c) 2023 Omar Chishti
 
 - Human Connectome Project for tractography data
 - Google Model Viewer team for the excellent 3D viewer component
+- DSI Studio
 - The neuroscience and neuroimaging communities
 
 ---
 
-**Built with ❤️ for neuroscience education**
+**Built for neuroscience education.**
