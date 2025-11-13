@@ -201,38 +201,31 @@
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <script type ="module">
+    <script type="module">
       const modelViewer = document.querySelector("#yale_brain_atlas");
-      modelViewer.addEventListener('dblclick', () => modelViewer.showPoster());                         
-      modelViewer.addEventListener('click', () => modelViewer.dismissPoster());
+      const checkbox = modelViewer.querySelector('#show-annotations');
 
+      // Function to update hotspot visibility based on checkbox state
+      function updateHotspotVisibility() {
+        modelViewer.querySelectorAll('button.hotspot').forEach((hotspot) => {
+          hotspot.style.visibility = checkbox.checked ? 'visible' : 'hidden';
+        });
+      }
 
+      // Poster interactions
+      modelViewer.addEventListener('dblclick', () => {
+        modelViewer.showPoster();
+      });
 
-  modelViewer.addEventListener('dblclick', () => {
-    modelViewer.querySelectorAll('button').forEach((hotspot) => {
-      hotspot.style.visibility = 'hidden'
-    });
-  });
-  modelViewer.addEventListener('click', () => {
-    modelViewer.querySelectorAll('button').forEach((hotspot) => {
-      if (checkbox.checked) {
-      hotspot.style.visibility = 'visible';
-    } else {
-      hotspot.style.visibility = 'hidden';
-    }
-    });
-  });
-  const checkbox = modelViewer.querySelector('#show-annotations');
+      modelViewer.addEventListener('click', () => {
+        modelViewer.dismissPoster();
+      });
 
-  checkbox.addEventListener('change', () => {
-    modelViewer.querySelectorAll('button').forEach((hotspot) => {
-      if (checkbox.checked) {
-      hotspot.style.visibility = 'visible';
-    } else {
-      hotspot.style.visibility = 'hidden';
-    }
-    });
-  });
-  </script>
+      // Checkbox toggle for annotations
+      checkbox.addEventListener('change', updateHotspotVisibility);
+
+      // Initialize visibility on load
+      updateHotspotVisibility();
+    </script>
   </body>
 </html>

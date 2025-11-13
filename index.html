@@ -3,12 +3,106 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>White Matter Tract Explorer</title>
-  <meta name="description" content="Interactive 3D visualization of white matter tracts">
+  <title>White Matter Tract Explorer | Interactive 3D Neuroanatomy Visualization</title>
+  <meta name="description" content="Explore 25+ white matter tracts in the human brain through interactive 3D visualization. Built with WebGL and model-viewer for an immersive neuroanatomy learning experience.">
+  <meta name="keywords" content="white matter tracts, neuroanatomy, 3D brain visualization, tractography, diffusion MRI, neuroscience, interactive anatomy">
+  <meta name="author" content="Omar Chishti">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://omar-chishti.github.io/">
+  <meta property="og:title" content="White Matter Tract Explorer | Interactive 3D Neuroanatomy">
+  <meta property="og:description" content="Explore 25+ white matter tracts in the human brain through interactive 3D visualization.">
+  <meta property="og:image" content="https://omar-chishti.github.io/tractograms_final.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://omar-chishti.github.io/">
+  <meta property="twitter:title" content="White Matter Tract Explorer | Interactive 3D Neuroanatomy">
+  <meta property="twitter:description" content="Explore 25+ white matter tracts in the human brain through interactive 3D visualization.">
+  <meta property="twitter:image" content="https://omar-chishti.github.io/tractograms_final.png">
+
   <link rel="stylesheet" href="./styles.css">
   <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
 </head>
 <body>
+
+  <!-- Header -->
+  <header id="main-header">
+    <div class="header-content">
+      <h1>White Matter Tract Explorer</h1>
+      <p class="subtitle">Interactive 3D Visualization of Human Brain Neuroanatomy</p>
+      <button id="info-button" aria-label="About this project">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        About
+      </button>
+    </div>
+  </header>
+
+  <!-- Info Modal -->
+  <div id="info-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <h2 id="modal-title">About This Project</h2>
+
+      <section>
+        <h3>Overview</h3>
+        <p>The White Matter Tract Explorer is an interactive web-based tool for exploring and learning about white matter pathways in the human brain. This project visualizes 25+ major fiber tracts derived from diffusion MRI tractography data.</p>
+      </section>
+
+      <section>
+        <h3>How to Use</h3>
+        <ul>
+          <li><strong>Rotate:</strong> Click and drag to rotate the 3D model</li>
+          <li><strong>Zoom:</strong> Scroll or pinch to zoom in/out</li>
+          <li><strong>Pan:</strong> Right-click and drag (or two-finger drag on mobile)</li>
+          <li><strong>Select Tract:</strong> Use the dropdown menu to view different white matter tracts</li>
+          <li><strong>Show Brain:</strong> Toggle the transparent brain overlay for anatomical context</li>
+          <li><strong>Dark Mode:</strong> Switch between light and dark themes for comfortable viewing</li>
+          <li><strong>AR Mode:</strong> On compatible mobile devices, view models in augmented reality</li>
+        </ul>
+
+        <h4>Keyboard Shortcuts</h4>
+        <ul>
+          <li><strong>i</strong> or <strong>?</strong> - Open this info modal</li>
+          <li><strong>Esc</strong> - Close modal</li>
+          <li><strong>d</strong> - Toggle dark mode</li>
+          <li><strong>b</strong> - Toggle brain overlay</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>White Matter Tracts</h3>
+        <p>White matter consists of myelinated axon bundles that form communication pathways between different brain regions. Major tract categories include:</p>
+        <ul>
+          <li><strong>Association Tracts:</strong> Connect regions within the same hemisphere (e.g., Arcuate Fasciculus, Superior Longitudinal Fasciculus)</li>
+          <li><strong>Commissural Tracts:</strong> Connect the two hemispheres (e.g., Corpus Callosum, Anterior Commissure)</li>
+          <li><strong>Projection Tracts:</strong> Connect cortex with subcortical structures (e.g., Corticospinal Tract, Optic Radiation)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Data Source & Attribution</h3>
+        <p>3D models are derived from high-resolution diffusion MRI tractography data from the Human Connectome Project. This visualization tool is intended for educational and research purposes.</p>
+      </section>
+
+      <section>
+        <h3>Technical Details</h3>
+        <p><strong>Developed:</strong> 2023<br>
+        <strong>Technologies:</strong> HTML5, CSS3, JavaScript, Google Model Viewer, WebGL<br>
+        <strong>License:</strong> MIT License</p>
+        <p>
+          <a href="https://github.com/omar-chishti/omar-chishti.github.io" target="_blank" rel="noopener">
+            View on GitHub
+          </a>
+        </p>
+      </section>
+    </div>
+  </div>
   
   <model-viewer 
     id="tract-viewer" 
@@ -77,8 +171,20 @@
     </div>
   </model-viewer>
   
+  <!-- Footer -->
+  <footer id="main-footer">
+    <div class="footer-content">
+      <p>
+        &copy; 2023 Omar Chishti |
+        <a href="https://github.com/omar-chishti/omar-chishti.github.io" target="_blank" rel="noopener">GitHub</a> |
+        Data: <a href="https://www.humanconnectome.org/" target="_blank" rel="noopener">Human Connectome Project</a>
+      </p>
+      <p class="footer-note">For educational and research purposes only</p>
+    </div>
+  </footer>
+
   <script type="module" src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer.min.js"></script>
   <script type="module" src="./script.js"></script>
-  
+
 </body>
 </html>

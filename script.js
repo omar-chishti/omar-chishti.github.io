@@ -70,6 +70,70 @@ modelViewer.addEventListener('load', () => {
   controlPanel.style.pointerEvents = 'auto';
 });
 
+/**
+ * Modal functionality
+ */
+const infoButton = document.querySelector('#info-button');
+const infoModal = document.querySelector('#info-modal');
+const modalClose = document.querySelector('.modal-close');
+
+function openModal() {
+  infoModal.classList.add('active');
+  infoModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  infoModal.classList.remove('active');
+  infoModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+// Modal event listeners
+if (infoButton) {
+  infoButton.addEventListener('click', openModal);
+}
+
+if (modalClose) {
+  modalClose.addEventListener('click', closeModal);
+}
+
+// Close modal when clicking outside content
+if (infoModal) {
+  infoModal.addEventListener('click', (e) => {
+    if (e.target === infoModal) {
+      closeModal();
+    }
+  });
+}
+
+/**
+ * Keyboard shortcuts
+ */
+document.addEventListener('keydown', (e) => {
+  // Escape key closes modal
+  if (e.key === 'Escape' && infoModal.classList.contains('active')) {
+    closeModal();
+  }
+
+  // 'i' or '?' key opens info modal
+  if ((e.key === 'i' || e.key === '?') && !infoModal.classList.contains('active')) {
+    openModal();
+  }
+
+  // 'd' key toggles dark mode
+  if (e.key === 'd' && !infoModal.classList.contains('active')) {
+    darkModeToggle.checked = !darkModeToggle.checked;
+    applyDarkMode(darkModeToggle.checked);
+  }
+
+  // 'b' key toggles brain overlay
+  if (e.key === 'b' && !infoModal.classList.contains('active')) {
+    showBrainCheckbox.checked = !showBrainCheckbox.checked;
+    updateModel();
+  }
+});
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
   // Restore dark mode preference
