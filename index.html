@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>White Matter Tract Explorer | Interactive 3D Neuroanatomy</title>
-  <meta name="description" content="Explore 25+ white matter tracts in the human brain through interactive 3D visualization. Built with WebGL and model-viewer for an immersive neuroanatomy learning experience.">
+  <meta name="description" content="Explore 24 white matter tracts in the human brain through interactive 3D visualization. Built with WebGL and model-viewer for an immersive neuroanatomy learning experience.">
   <meta name="keywords" content="white matter tracts, neuroanatomy, 3D brain visualization, tractography, diffusion MRI, neuroscience, interactive anatomy">
   <meta name="author" content="Omar Chishti">
 
@@ -12,22 +12,33 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://omar-chishti.github.io/">
   <meta property="og:title" content="White Matter Tract Explorer | Interactive 3D Neuroanatomy">
-  <meta property="og:description" content="Explore 25+ white matter tracts in the human brain through interactive 3D visualization.">
+  <meta property="og:description" content="Explore 24 white matter tracts in the human brain through interactive 3D visualization.">
   <meta property="og:image" content="https://omar-chishti.github.io/tractograms_final.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://omar-chishti.github.io/">
   <meta property="twitter:title" content="White Matter Tract Explorer | Interactive 3D Neuroanatomy">
-  <meta property="twitter:description" content="Explore 25+ white matter tracts in the human brain through interactive 3D visualization.">
+  <meta property="twitter:description" content="Explore 24 white matter tracts in the human brain through interactive 3D visualization.">
   <meta property="twitter:image" content="https://omar-chishti.github.io/tractograms_final.png">
+
+  <!-- Classical Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./styles.css">
   <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
 </head>
 <body>
 
-  <!-- Info Modal -->
+  <!-- Header: Refined classical presentation -->
+  <header id="page-header">
+    <h1>White Matter Tract Explorer</h1>
+    <p class="subtitle">Interactive three-dimensional visualization of human neuroanatomy</p>
+  </header>
+
+  <!-- Information Modal: Detailed project context and controls -->
   <div id="info-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" aria-label="Close modal">&times;</button>
@@ -35,32 +46,33 @@
 
       <section>
         <h3>Overview</h3>
-        <p>Interactive 3D visualization of white matter pathways in the human brain. This project visualizes 25+ major fiber tracts derived from diffusion MRI tractography data from the Human Connectome Project.</p>
+        <p>Interactive 3D visualization of white matter pathways in the human brain. This project presents 24 major fiber tracts derived from high-resolution diffusion MRI tractography data, courtesy of the Human Connectome Project.</p>
       </section>
 
       <section>
         <h3>Controls</h3>
         <ul>
-          <li><strong>Rotate:</strong> Click and drag</li>
-          <li><strong>Zoom:</strong> Scroll or pinch</li>
-          <li><strong>Pan:</strong> Right-click and drag</li>
+          <li><strong>Rotate:</strong> Click and drag to orbit</li>
+          <li><strong>Zoom:</strong> Scroll wheel or pinch gesture</li>
+          <li><strong>Pan:</strong> Right-click and drag (two-finger drag on mobile)</li>
         </ul>
 
         <h4>Keyboard Shortcuts</h4>
         <ul>
-          <li><strong>i</strong> or <strong>?</strong> - Open/close this info</li>
-          <li><strong>Esc</strong> - Close modal</li>
-          <li><strong>d</strong> - Toggle dark mode</li>
-          <li><strong>b</strong> - Toggle brain overlay</li>
+          <li><kbd>i</kbd> or <kbd>?</kbd> — Open/close this dialog</li>
+          <li><kbd>Esc</kbd> — Close modal</li>
+          <li><kbd>d</kbd> — Toggle dark mode</li>
+          <li><kbd>b</kbd> — Toggle brain overlay</li>
         </ul>
       </section>
 
       <section>
         <h3>About</h3>
-        <p><strong>Developed:</strong> 2023<br>
+        <p><strong>Created:</strong> 2023<br>
+        <strong>Data Source:</strong> Human Connectome Project<br>
         <strong>License:</strong> MIT License</p>
         <p>
-          <a href="https://github.com/omar-chishti/omar-chishti.github.io" target="_blank" rel="noopener">View on GitHub</a>
+          <a href="https://github.com/omar-chishti/omar-chishti.github.io" target="_blank" rel="noopener">View Source on GitHub</a>
         </p>
       </section>
     </div>
@@ -89,10 +101,13 @@
       <img src="https://modelviewer.dev/shared-assets/icons/hand.png" alt="Hand gesture">
     </div>
     
-    <!-- Control Panel -->
+    <!-- Control Panel: Tract selection and viewing options -->
     <div id="controls">
-      <select id="src">
-        <option value="5k_tracts_mesh.glb">Template Tractogram</option>
+      <select id="src" aria-label="Select white matter tract">
+        <!-- Full template tractogram showing complete fiber architecture -->
+        <option value="5k_tracts_mesh.glb">Complete Tractogram</option>
+
+        <!-- Association Tracts: Connecting regions within the same hemisphere -->
         <option value="L_AF.glb">Arcuate Fasciculus</option>
         <option value="L_UF.glb">Uncinate Fasciculus</option>
         <option value="L_IFOF.glb">Inferior Frontooccipital Fasciculus</option>
@@ -101,9 +116,11 @@
         <option value="L_SLF.glb">Superior Longitudinal Fasciculus</option>
         <option value="L_VOF.glb">Vertical Occipital Fasciculus</option>
         <option value="L_FAT.glb">Frontal Aslant Tract</option>
-        <option value="AR_L.glb">Acoustic Radiation</option>
         <option value="L_CG.glb">Cingulum</option>
         <option value="L_EMC.glb">Extreme Capsule</option>
+
+        <!-- Projection Tracts: Connecting cortex with subcortical structures -->
+        <option value="AR_L.glb">Acoustic Radiation</option>
         <option value="CBT_L.glb">Corticobulbar Tract</option>
         <option value="CPT_L.glb">Corticopontine Tract</option>
         <option value="CS_L.glb">Corticostriatal Tract</option>
@@ -114,23 +131,27 @@
         <option value="OR_L.glb">Optic Radiation</option>
         <option value="RST_L.glb">Reticulospinal Tract</option>
         <option value="TR_L.glb">Thalamic Radiation</option>
+
+        <!-- Commissural Tracts: Connecting the two hemispheres -->
         <option value="AC.glb">Anterior Commissure</option>
         <option value="CC.glb">Corpus Callosum</option>
+
+        <!-- Cerebellar Structure -->
         <option value="L_CB.glb">Cerebellum</option>
       </select>
 
       <div id="controls-checkboxes">
         <label for="show-brain">
-          Show Brain:
+          Brain Overlay
           <input id="show-brain" type="checkbox">
         </label>
 
         <label for="dark-mode">
-          Dark Mode:
+          Dark Mode
           <input id="dark-mode" type="checkbox" checked>
         </label>
 
-        <button id="info-button" aria-label="About" title="About (press i or ?)">
+        <button id="info-button" aria-label="About this project" title="About (press i or ?)">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="16" x2="12" y2="12"></line>
@@ -140,11 +161,6 @@
       </div>
     </div>
   </model-viewer>
-  
-  <!-- Footer -->
-  <footer id="main-footer">
-    <span>&copy; 2023 Omar Chishti | Data: <a href="https://www.humanconnectome.org/" target="_blank" rel="noopener">HCP</a></span>
-  </footer>
 
   <script type="module" src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer.min.js"></script>
   <script type="module" src="./script.js"></script>
