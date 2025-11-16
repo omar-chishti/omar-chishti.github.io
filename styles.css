@@ -77,6 +77,28 @@ body {
   letter-spacing: 0.3px;
 }
 
+#page-header .author {
+  margin: 3px 0 0 0;
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 11px;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(245, 245, 245, 0.6);
+  letter-spacing: 0.2px;
+}
+
+#page-header .author a {
+  color: rgba(245, 245, 245, 0.8);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.3);
+  transition: all 0.2s ease;
+}
+
+#page-header .author a:hover {
+  color: #fff;
+  border-bottom-color: rgba(245, 245, 245, 0.6);
+}
+
 /* ─────────────────────────────────────────────────────────────────────────
    MODAL: Information dialog with classical typography
    ───────────────────────────────────────────────────────────────────────── */
@@ -239,6 +261,12 @@ body {
   color: #fff;
 }
 
+.dark-mode .modal-content p[style*="Monaco"] {
+  background-color: #2a2a2a !important;
+  border-left-color: #e5e5e5 !important;
+  color: #e5e5e5;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -352,6 +380,21 @@ model-viewer {
   outline-offset: 0;
 }
 
+#controls optgroup {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #2c2c2c;
+  font-style: normal;
+  padding: 4px 0;
+}
+
+#controls option {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-weight: 400;
+  padding: 4px 8px;
+}
+
 #controls-checkboxes {
   margin-top: 14px;
   padding-top: 14px;
@@ -431,6 +474,14 @@ model-viewer {
 .dark-mode #controls select:focus {
   outline-color: #e5e5e5;
   border-color: #e5e5e5;
+}
+
+.dark-mode #controls optgroup {
+  color: #e5e5e5;
+}
+
+.dark-mode #controls option {
+  color: #e5e5e5;
 }
 
 .dark-mode #controls-checkboxes {
@@ -561,6 +612,10 @@ model-viewer > #ar-prompt > img {
 
   #page-header .subtitle {
     font-size: 11px;
+  }
+
+  #page-header .author {
+    font-size: 10px;
   }
 
   model-viewer {

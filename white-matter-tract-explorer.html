@@ -10,14 +10,14 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://omar-chishti.github.io/">
+  <meta property="og:url" content="https://omar-chishti.github.io/white-matter-tract-explorer.html">
   <meta property="og:title" content="White Matter Tract Explorer | Interactive 3D Neuroanatomy">
   <meta property="og:description" content="Explore 24 white matter tracts in the human brain through interactive 3D visualization.">
   <meta property="og:image" content="https://omar-chishti.github.io/tractograms_final.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://omar-chishti.github.io/">
+  <meta property="twitter:url" content="https://omar-chishti.github.io/white-matter-tract-explorer.html">
   <meta property="twitter:title" content="White Matter Tract Explorer | Interactive 3D Neuroanatomy">
   <meta property="twitter:description" content="Explore 24 white matter tracts in the human brain through interactive 3D visualization.">
   <meta property="twitter:image" content="https://omar-chishti.github.io/tractograms_final.png">
@@ -37,7 +37,7 @@
     "@type": "WebApplication",
     "name": "White Matter Tract Explorer",
     "description": "Interactive 3D visualization of 25 white matter pathways in the human brain. Built with WebGL and model-viewer for immersive neuroanatomy education.",
-    "url": "https://omar-chishti.github.io/",
+    "url": "https://omar-chishti.github.io/white-matter-tract-explorer.html",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Web Browser",
     "author": {
@@ -123,30 +123,30 @@
       </section>
     </div>
   </div>
-  
-  <model-viewer 
-    id="tract-viewer" 
-    src="5k_tracts_mesh.glb" 
-    camera-controls 
+
+  <model-viewer
+    id="tract-viewer"
+    src="5k_tracts_mesh.glb"
+    camera-controls
     touch-action="pan-y"
     shadow-intensity="1"
     alt="3D White Matter Tracts">
-    
+
     <!-- Progress Bar -->
     <div class="progress-bar hide" slot="progress-bar">
       <div class="update-bar"></div>
     </div>
-    
+
     <!-- AR Button -->
     <button slot="ar-button" id="ar-button">
       View in your space
     </button>
-    
+
     <!-- AR Prompt -->
     <div id="ar-prompt">
       <img src="https://modelviewer.dev/shared-assets/icons/hand.png" alt="Hand gesture">
     </div>
-    
+
     <!-- Control Panel: Tract selection and viewing options -->
     <div id="controls">
       <select id="src" aria-label="Select white matter tract">

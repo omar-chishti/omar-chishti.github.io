@@ -29,6 +29,51 @@ const showBrainCheckbox = document.querySelector('#show-brain');
 const darkModeToggle = document.querySelector('#dark-mode');
 
 /* ───────────────────────────────────────────────────────────────────────────
+   TRACT NAME MAPPING
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Maps GLB filenames to human-readable tract names for loading messages.
+ * Organized by neuroanatomical category.
+ */
+const tractNames = {
+  '5k_tracts_mesh.glb': 'Complete Tractogram',
+
+  // Association Tracts
+  'L_AF.glb': 'Arcuate Fasciculus',
+  'L_CG.glb': 'Cingulum',
+  'L_EMC.glb': 'Extreme Capsule',
+  'L_FAT.glb': 'Frontal Aslant Tract',
+  'L_IFOF.glb': 'Inferior Frontooccipital Fasciculus',
+  'L_ILF.glb': 'Inferior Longitudinal Fasciculus',
+  'L_mLF.glb': 'Middle Longitudinal Fasciculus',
+  'L_PAT.glb': 'Parietal Aslant Tract',
+  'L_SLF.glb': 'Superior Longitudinal Fasciculus',
+  'L_UF.glb': 'Uncinate Fasciculus',
+  'L_VOF.glb': 'Vertical Occipital Fasciculus',
+
+  // Projection Tracts
+  'AR_L.glb': 'Acoustic Radiation',
+  'CBT_L.glb': 'Corticobulbar Tract',
+  'CPT_L.glb': 'Corticopontine Tract',
+  'CS_L.glb': 'Corticostriatal Tract',
+  'CST_L.glb': 'Corticospinal Tract',
+  'DRTT_L.glb': 'Dentatorubrothalamic Tract',
+  'F_L.glb': 'Fornix',
+  'ML_L.glb': 'Medial Lemniscus',
+  'OR_L.glb': 'Optic Radiation',
+  'RST_L.glb': 'Reticulospinal Tract',
+  'TR_L.glb': 'Thalamic Radiation',
+
+  // Commissural Tracts
+  'AC.glb': 'Anterior Commissure',
+  'CC.glb': 'Corpus Callosum',
+
+  // Cerebellar
+  'L_CB.glb': 'Cerebellum'
+};
+
+/* ───────────────────────────────────────────────────────────────────────────
    MODEL RENDERING FUNCTIONS
    ─────────────────────────────────────────────────────────────────────────── */
 
@@ -40,15 +85,20 @@ const darkModeToggle = document.querySelector('#dark-mode');
  * spatial context.
  *
  * Visual feedback is provided during loading by temporarily disabling the
- * control panel to prevent rapid successive model changes.
+ * control panel to prevent rapid successive model changes. An elegant loading
+ * message displays the tract name being loaded.
  */
 function updateModel() {
   const tractValue = tractSelect.value;
+  const tractName = tractNames[tractValue] || 'White Matter Tract';
 
   // Provide visual feedback during model loading
   const controlPanel = document.querySelector('#controls');
   controlPanel.style.opacity = '0.6';
   controlPanel.style.pointerEvents = 'none';
+
+  // Update page title with current tract name
+  document.title = `${tractName} | White Matter Tract Explorer`;
 
   if (showBrainCheckbox.checked) {
     // Load tract model with transparent brain overlay for anatomical context
@@ -57,6 +107,11 @@ function updateModel() {
     // Load isolated tract model
     modelViewer.src = tractValue;
   }
+
+  // Update URL with current tract selection for deep linking
+  const url = new URL(window.location);
+  url.searchParams.set('tract', tractValue);
+  window.history.replaceState({}, '', url);
 }
 
 /**
@@ -218,12 +273,35 @@ document.addEventListener('keydown', (e) => {
  *
  * Dark mode preference is persisted in localStorage to maintain consistent
  * viewing experience across sessions.
+ *
+ * Additionally handles deep linking via URL parameters. If a `tract` parameter
+ * is present in the URL (e.g., ?tract=L_AF.glb), the corresponding tract is
+ * automatically selected and loaded.
  */
 document.addEventListener('DOMContentLoaded', () => {
+  // Restore dark mode preference
   const savedDarkMode = localStorage.getItem('dark-mode');
 
   // Apply saved dark mode preference, or default to checkbox state
   if (savedDarkMode === 'true' || (savedDarkMode === null && darkModeToggle.checked)) {
     document.body.classList.add('dark-mode');
+  }
+
+  // Handle deep linking via URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const tractParam = urlParams.get('tract');
+
+  if (tractParam) {
+    // Verify the tract exists in the dropdown options
+    const tractOption = Array.from(tractSelect.options).find(
+      option => option.value === tractParam
+    );
+
+    if (tractOption) {
+      // Set the dropdown to the specified tract
+      tractSelect.value = tractParam;
+      // Trigger model update to load the tract
+      updateModel();
+    }
   }
 });
