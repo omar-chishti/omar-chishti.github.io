@@ -7,6 +7,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://omar-chishti.github.io/white-matter-tract-explorer.html</loc>
+    <lastmod>2023-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://omar-chishti.github.io/demo.html</loc>
     <lastmod>2023-12-01</lastmod>
     <changefreq>monthly</changefreq>
