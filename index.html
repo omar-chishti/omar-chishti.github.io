@@ -27,6 +27,42 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧠</text></svg>">
+
+  <!-- Schema.org Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "White Matter Tract Explorer",
+    "description": "Interactive 3D visualization of 25 white matter pathways in the human brain. Built with WebGL and model-viewer for immersive neuroanatomy education.",
+    "url": "https://omar-chishti.github.io/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web Browser",
+    "author": {
+      "@type": "Person",
+      "name": "Omar Chishti",
+      "url": "https://www.omarchishti.com/"
+    },
+    "creator": {
+      "@type": "Person",
+      "name": "Omar Chishti",
+      "url": "https://www.omarchishti.com/"
+    },
+    "datePublished": "2023",
+    "inLanguage": "en",
+    "keywords": "white matter tracts, neuroanatomy, 3D brain visualization, tractography, diffusion MRI, neuroscience, interactive anatomy, Human Connectome Project",
+    "educationalUse": "Teaching and learning neuroanatomy",
+    "learningResourceType": "Interactive 3D Model",
+    "about": {
+      "@type": "MedicalEntity",
+      "name": "White Matter Tracts",
+      "description": "Neural pathways in the human brain"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="./styles.css">
   <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
 </head>
@@ -36,6 +72,7 @@
   <header id="page-header">
     <h1>White Matter Tract Explorer</h1>
     <p class="subtitle">Interactive three-dimensional visualization of human neuroanatomy</p>
+    <p class="author">Created by <a href="https://www.omarchishti.com/" target="_blank" rel="noopener">Omar Chishti</a></p>
   </header>
 
   <!-- Information Modal: Detailed project context and controls -->
@@ -68,11 +105,20 @@
 
       <section>
         <h3>About</h3>
-        <p><strong>Created:</strong> 2023<br>
+        <p><strong>Author:</strong> <a href="https://www.omarchishti.com/" target="_blank" rel="noopener">Omar Chishti</a><br>
+        <strong>Created:</strong> 2023<br>
         <strong>Data Source:</strong> Human Connectome Project<br>
         <strong>License:</strong> MIT License</p>
         <p>
           <a href="https://github.com/omar-chishti/omar-chishti.github.io" target="_blank" rel="noopener">View Source on GitHub</a>
+        </p>
+      </section>
+
+      <section>
+        <h3>How to Cite</h3>
+        <p>If you use this visualization in your research or educational materials, please cite:</p>
+        <p style="font-family: 'Monaco', 'Courier New', monospace; font-size: 13px; background-color: #f5f5f5; padding: 12px; border-radius: 3px; border-left: 3px solid #2c2c2c;">
+          Chishti, O. (2023). <em>White Matter Tract Explorer: Interactive 3D Visualization of Human Neuroanatomy</em>. https://omar-chishti.github.io/white-matter-tract-explorer.html
         </p>
       </section>
     </div>
@@ -104,40 +150,49 @@
     <!-- Control Panel: Tract selection and viewing options -->
     <div id="controls">
       <select id="src" aria-label="Select white matter tract">
-        <!-- Full template tractogram showing complete fiber architecture -->
+        <!-- Complete tractogram overview -->
         <option value="5k_tracts_mesh.glb">Complete Tractogram</option>
 
         <!-- Association Tracts: Connecting regions within the same hemisphere -->
-        <option value="L_AF.glb">Arcuate Fasciculus</option>
-        <option value="L_UF.glb">Uncinate Fasciculus</option>
-        <option value="L_IFOF.glb">Inferior Frontooccipital Fasciculus</option>
-        <option value="L_ILF.glb">Inferior Longitudinal Fasciculus</option>
-        <option value="L_mLF.glb">Middle Longitudinal Fasciculus</option>
-        <option value="L_SLF.glb">Superior Longitudinal Fasciculus</option>
-        <option value="L_VOF.glb">Vertical Occipital Fasciculus</option>
-        <option value="L_FAT.glb">Frontal Aslant Tract</option>
-        <option value="L_CG.glb">Cingulum</option>
-        <option value="L_EMC.glb">Extreme Capsule</option>
+        <optgroup label="Association Tracts">
+          <option value="L_AF.glb">Arcuate Fasciculus</option>
+          <option value="L_CG.glb">Cingulum</option>
+          <option value="L_EMC.glb">Extreme Capsule</option>
+          <option value="L_FAT.glb">Frontal Aslant Tract</option>
+          <option value="L_IFOF.glb">Inferior Frontooccipital Fasciculus</option>
+          <option value="L_ILF.glb">Inferior Longitudinal Fasciculus</option>
+          <option value="L_mLF.glb">Middle Longitudinal Fasciculus</option>
+          <option value="L_PAT.glb">Parietal Aslant Tract</option>
+          <option value="L_SLF.glb">Superior Longitudinal Fasciculus</option>
+          <option value="L_UF.glb">Uncinate Fasciculus</option>
+          <option value="L_VOF.glb">Vertical Occipital Fasciculus</option>
+        </optgroup>
 
         <!-- Projection Tracts: Connecting cortex with subcortical structures -->
-        <option value="AR_L.glb">Acoustic Radiation</option>
-        <option value="CBT_L.glb">Corticobulbar Tract</option>
-        <option value="CPT_L.glb">Corticopontine Tract</option>
-        <option value="CS_L.glb">Corticostriatal Tract</option>
-        <option value="CST_L.glb">Corticospinal Tract</option>
-        <option value="DRTT_L.glb">Dentatorubrothalamic Tract</option>
-        <option value="F_L.glb">Fornix</option>
-        <option value="ML_L.glb">Medial Lemniscus</option>
-        <option value="OR_L.glb">Optic Radiation</option>
-        <option value="RST_L.glb">Reticulospinal Tract</option>
-        <option value="TR_L.glb">Thalamic Radiation</option>
+        <optgroup label="Projection Tracts">
+          <option value="AR_L.glb">Acoustic Radiation</option>
+          <option value="CBT_L.glb">Corticobulbar Tract</option>
+          <option value="CPT_L.glb">Corticopontine Tract</option>
+          <option value="CS_L.glb">Corticostriatal Tract</option>
+          <option value="CST_L.glb">Corticospinal Tract</option>
+          <option value="DRTT_L.glb">Dentatorubrothalamic Tract</option>
+          <option value="F_L.glb">Fornix</option>
+          <option value="ML_L.glb">Medial Lemniscus</option>
+          <option value="OR_L.glb">Optic Radiation</option>
+          <option value="RST_L.glb">Reticulospinal Tract</option>
+          <option value="TR_L.glb">Thalamic Radiation</option>
+        </optgroup>
 
         <!-- Commissural Tracts: Connecting the two hemispheres -->
-        <option value="AC.glb">Anterior Commissure</option>
-        <option value="CC.glb">Corpus Callosum</option>
+        <optgroup label="Commissural Tracts">
+          <option value="AC.glb">Anterior Commissure</option>
+          <option value="CC.glb">Corpus Callosum</option>
+        </optgroup>
 
         <!-- Cerebellar Structure -->
-        <option value="L_CB.glb">Cerebellum</option>
+        <optgroup label="Cerebellar">
+          <option value="L_CB.glb">Cerebellum</option>
+        </optgroup>
       </select>
 
       <div id="controls-checkboxes">
