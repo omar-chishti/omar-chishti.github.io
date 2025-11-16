@@ -1,0 +1,9 @@
+# robots.txt for White Matter Tract Explorer
+# An interactive 3D visualization of human neuroanatomy
+# https://omar-chishti.github.io
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://omar-chishti.github.io/sitemap.xml
