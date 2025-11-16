@@ -14,12 +14,25 @@ This web-based application presents 25 major white matter tracts derived from hi
 
 ## Features
 
-**Visualization**
-- Interactive 3D models with camera controls (rotate, zoom, pan)
-- Categorized tract selection organized by neuroanatomical function
-- Optional transparent brain overlay for anatomical context
-- Deep linking to specific tracts via URL parameters
-- Dynamic page titles reflecting current selection
+- **Interactive 3D Visualization**: Rotate, zoom, and pan through 25+ white matter tract models
+- **Brain Overlay**: Toggle transparent brain anatomy for anatomical context
+- **Dark Mode**: Optimized viewing experience for different lighting conditions
+- **Augmented Reality**: View models in physical space on compatible devices
+- **Responsive Design**: Seamless experience across desktop and mobile platforms
+
+## Technical Stack
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- [Google Model Viewer](https://modelviewer.dev/) (Web Component)
+- GLB (GL Transmission Format) 3D models
+- Blender (for creating models)
+- DSI Studio (for processing difussion MRI data)
+
+## Live Demo
+
+Visit the live application: **[https://omar-chishti.github.io](https://omar-chishti.github.io)**
 
 **Interface**
 - Classical typography (Cinzel and Crimson Text)
@@ -148,11 +161,12 @@ If you use this visualization in your research or educational materials, please 
 ## Acknowledgments
 
 - Human Connectome Project for tractography data
-- Google Model Viewer team for the 3D web component
-- The neuroscience and neuroimaging research communities
+- Google Model Viewer team for the excellent 3D viewer component
+- DSI Studio
+- The neuroscience and neuroimaging communities
 
 ## License
 
 MIT License — See [LICENSE](LICENSE) file for complete terms.
 
-Copyright © 2023 [Omar Chishti](https://www.omarchishti.com/)
+**Built for neuroscience education.**
